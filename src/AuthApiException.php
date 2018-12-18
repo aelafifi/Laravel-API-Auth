@@ -1,6 +1,6 @@
 <?php
 
-namespace ElMag\AuthAPI;
+namespace ElMag\AuthApi;
 
 use Symfony\Component\HttpKernel\Exception\HttpException;
 

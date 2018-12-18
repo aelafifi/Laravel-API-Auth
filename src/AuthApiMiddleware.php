@@ -1,6 +1,6 @@
 <?php
 
-namespace ElMag\AuthAPI;
+namespace ElMag\AuthApi;
 
 use Closure;
 use Illuminate\Http\Request;
@@ -8,7 +8,7 @@ use Illuminate\Http\Request;
 class AuthApiMiddleware
 {
     /**
-     * Authenticate user using AuthAPI
+     * Authenticate user using AuthApi
      *
      * @param Request $request
      * @param Closure $next
@@ -16,7 +16,7 @@ class AuthApiMiddleware
      */
     public function handle(Request $request, Closure $next)
     {
-        $user = AuthApiTokenManager::getRequestedUser();
+        $user = JsonStoreTokenManager::getRequestedUser();
 
         if (is_object($user)) {
             return $next($request);
@@ -24,13 +24,13 @@ class AuthApiMiddleware
 
         switch ($user) {
             case -1:
-                throw new AuthApiException(401, 'UnAuthorized.');
+                throw new JsonStoreException(401, 'UnAuthorized.');
             case -2:
-                throw new AuthApiException(401, 'Token Not Found.');
+                throw new JsonStoreException(401, 'Token Not Found.');
             case -3:
-                throw new AuthApiException(401, 'Token Expired.');
+                throw new JsonStoreException(401, 'Token Expired.');
             default:
-                throw new AuthApiException(500, 'Unknown Exception.');
+                throw new JsonStoreException(500, 'Unknown Exception.');
         }
     }
 }

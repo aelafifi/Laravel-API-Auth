@@ -9,13 +9,13 @@
       "src/helpers.php"
     ],
     "psr-4": {
-      "ElMag\\AuthAPI\\": "src/"
+      "ElMag\\AuthApi\\": "src/"
     }
   },
   "extra": {
     "laravel": {
       "providers": [
-        "ElMag\\AuthAPI\\AuthApiServiceProvider"
+        "ElMag\\AuthApi\\AuthApiServiceProvider"
       ]
     }
   },

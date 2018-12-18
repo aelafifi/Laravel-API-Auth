@@ -1,6 +1,6 @@
 <?php
 
-namespace ElMag\AuthAPI;
+namespace ElMag\AuthApi;
 
 use Illuminate\Database\Eloquent\Model;
 use Illuminate\Support\Carbon;
@@ -27,7 +27,7 @@ class AuthApiToken extends Model
 
     public function user()
     {
-        return $this->belongsTo(AuthApiTokenManager::getUserClass(), 'user_id');
+        return $this->belongsTo(JsonStoreTokenManager::getUserClass(), 'user_id');
     }
 
     public function access()

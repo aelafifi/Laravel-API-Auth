@@ -1,6 +1,6 @@
 <?php
 
-namespace ElMag\AuthAPI;
+namespace ElMag\AuthApi;
 
 use Illuminate\Support\ServiceProvider;
 

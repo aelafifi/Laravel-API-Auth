@@ -1,6 +1,6 @@
 <?php
 
-namespace ElMag\AuthAPI;
+namespace ElMag\AuthApi;
 
 use Illuminate\Support\Carbon;
 
@@ -20,7 +20,7 @@ class AuthApiTokenManager
             static::$booted = true;
 
             $expiration_date = Carbon::now()->subDays(static::$validity_days);
-            (new AuthApiToken)
+            (new JsonStore)
                 ->newQuery()
                 ->where('last_access', '<=', $expiration_date)
                 ->update([
@@ -49,7 +49,7 @@ class AuthApiTokenManager
                 return static::TOKEN_NOT_SET;
             }
 
-            $tokenRecord = (new AuthApiToken)
+            $tokenRecord = (new JsonStore)
                 ->newQuery()
                 ->where('token', $token)
                 ->first();

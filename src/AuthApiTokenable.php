@@ -1,6 +1,6 @@
 <?php
 
-namespace ElMag\AuthAPI;
+namespace ElMag\AuthApi;
 
 use Illuminate\Support\Carbon;
 
@@ -8,20 +8,20 @@ trait AuthApiTokenable
 {
     public function getValidToken()
     {
-        AuthApiTokenManager::boot();
+        JsonStoreTokenManager::boot();
         return $this->tokens()->whereValid()->first();
     }
 
     public function tokens()
     {
-        return $this->hasMany(AuthApiToken::class, 'user_id');
+        return $this->hasMany(JsonStore::class, 'user_id');
     }
 
     public function getTokenOrCreate()
     {
-        AuthApiTokenManager::boot();
+        JsonStoreTokenManager::boot();
 
-        /** @var AuthApiToken $model */
+        /** @var JsonStore $model */
         $model = $this
             ->tokens()
             ->whereValid()

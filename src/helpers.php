@@ -1,11 +1,11 @@
 <?php
 
-use ElMag\AuthAPI\AuthApiTokenManager;
+use ElMag\AuthApi\JsonStoreTokenManager;
 
 if (!function_exists('api_user')) {
     function api_user()
     {
-        $user = AuthApiTokenManager::getRequestedUser();
+        $user = JsonStoreTokenManager::getRequestedUser();
 
         if (is_int($user) && $user < 0) {
             return null;
